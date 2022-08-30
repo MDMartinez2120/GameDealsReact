@@ -1,10 +1,10 @@
 import './App.css';
-import GameSearch from "./components/GameSearch";
+import GameDeals from "./components/GameDeals";
 
 function App() {
   return (
     <div className="App">
-        <GameSearch />
+        <GameDeals />
     </div>
   );
 }
