@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import Card from "./Card";
+
 
 function GameDeals(){
 
@@ -21,7 +23,7 @@ function GameDeals(){
             }
         };
 
-        const response = await fetch('https://cheapshark-game-deals.p.rapidapi.com/deals?lowerPrice=0&steamRating=0&title=batman&desc=0&output=json&steamworks=0&sortBy=Deal%20Rating&AAA=0&pageSize=60&exact=0&upperPrice=50&pageNumber=0&onSale=0&metacritic=0&storeID%5B0%5D=1%2C2%2C3', options)
+        const response = await fetch('https://cheapshark-game-deals.p.rapidapi.com/deals', options)
             // .then(response => response.json())
 
         setName(await response.json())
@@ -31,13 +33,17 @@ function GameDeals(){
     return (
         <div>
             <h1>Game Deals</h1>
-            <ol className='list-group list-group-numbered'>
                 {name.map((data) => {
                     return (
-                        <li className='list-group-item' key={data.id}> {data.title} </li>
+                        <Card
+                            id={data.id}
+                            title={data.title}
+                            salePrice={data.salePrice}
+                            normalPrice={data.normalPrice}
+                            gameImg={data.thumb}
+                        />
                     )
                 })}
-            </ol>
         </div>
     )
 
