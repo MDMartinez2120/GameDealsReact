@@ -1,18 +1,16 @@
 .whole-card {
-    flex: 1 0 48%;
-    flex-wrap: wrap;
-    margin: 1%;
-    justify-content: space-between;
-    padding: 2px 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
 }
 
 .card {
-    background-color: white;
+    background-color: black;
     color: #272727;
     padding: 20px;
     border-radius: 10px;
     border: 1px;
-    border-color: dimgrey;
+    border-color: limegreen;
     border-style: solid;
     transition: 200ms;
     max-width: 380px;
@@ -21,7 +19,7 @@
 .card:hover {
     transition: 200ms;
     border: 3px;
-    border-color: teal;
+    border-color: lime;
     border-style: solid;
 }
 
@@ -48,8 +46,7 @@
     object-fit: initial;
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1199px) {
-    .whole-card {
-
-    }
+hr {
+    width: 75%;
 }
+
