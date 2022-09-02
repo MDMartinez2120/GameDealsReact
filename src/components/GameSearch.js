@@ -1,15 +1,26 @@
 import React, {useState, useEffect} from "react";
-import GameDeals from "./GameDeals";
 
 function GameSearch(){
 
     const API_KEY = process.env["REACT_APP_GAME_DEALS"];
+
+    //grab users input
+
 
 
 
 }
 
 export default GameSearch;
+
+
+
+
+
+
+
+
+
 
 //
 // const [title, setTitle] = useState("Red Dead Redemption");
