@@ -3,14 +3,14 @@ import "./Card.css";
 
 export default function Card(props){
     return (
-        <div className="whole-card">
+        <div className="cards">
             <div className="card">
                 <div className="card-title-group">
                     <h5 className="card-title">{props.title}</h5>
                 </div>
                 <img className="card-img" src={props.gameImg} alt="game image"/>
                 <div className="card-game-prices">
-                    <h5 className="game-deal">Sale Price: {props.salePrice}</h5>
+                    <h5 className="game-deal">Sale Price: {'$' + props.salePrice}</h5>
                     <hr
                         style={{
                             background: 'lime',
@@ -19,7 +19,7 @@ export default function Card(props){
                             height: '3px',
                         }}
                     />
-                    <h5 className="game-price-original">Normal Price: {props.normalPrice}</h5>
+                    <h5 className="game-price-original">Normal Price: {'$' + props.normalPrice}</h5>
                 </div>
             </div>
         </div>

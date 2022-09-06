@@ -1,7 +1,5 @@
-.whole-card {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.cards {
+    margin-top: 20px;
 }
 
 .card {
@@ -50,3 +48,8 @@ hr {
     width: 75%;
 }
 
+@media (min-width: 1200px){
+    .whole-card{
+        width: 100%
+    }
+}

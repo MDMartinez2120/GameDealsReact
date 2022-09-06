@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Card from "./Card";
 
 
-function GameDeals(props){
+function GameDeals(){
 
     const API_KEY = process.env["REACT_APP_GAME_DEALS"];
 
@@ -32,7 +32,7 @@ function GameDeals(props){
 
     return (
         <div>
-            <h1>Game Deals</h1>
+            <h1>All Game Deals</h1>
                 {name.map((data, index) => {
                     return (
                         <Card
