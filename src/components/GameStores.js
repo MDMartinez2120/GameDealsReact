@@ -6,7 +6,6 @@ function GameStores(){
     const API_KEY = process.env["REACT_APP_GAME_DEALS"];
 
     const [name, setName] = useState([]);
-    const [image, setImage] = useState([]);
 
     useEffect(() => {
         stores()
@@ -24,7 +23,6 @@ function GameStores(){
         const response = await fetch('https://cheapshark-game-deals.p.rapidapi.com/stores', options)
 
         setName(await response.json());
-        // setImage(await response.json())
     }
 
     return (
@@ -34,7 +32,7 @@ function GameStores(){
                     <StoreCard
                         key={index}
                         storeName={data.storeName}
-                        images={data.images.banner}
+                        images={data.images}
                     />
                 )
             })}
