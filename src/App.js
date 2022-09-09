@@ -5,8 +5,8 @@ import GameStores from "./components/GameStores";
 function App() {
   return (
     <div className="App">
-        <GameStores />
         <GameSearch />
+        <GameStores />
         <GameDeals />
     </div>
   );

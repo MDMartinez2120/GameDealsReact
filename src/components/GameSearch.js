@@ -42,8 +42,8 @@ function GameSearch(){
 
     return (
         <div className="GameSearch">
-            <h3 className="pageHeader"> Search deals by Game</h3>
-            <form onSubmit={handleSubmit} >
+            <h3 className="pageHeader d-flex justify-content-center"> Search deals by Game</h3>
+            <form className='d-flex justify-content-center' onSubmit={handleSubmit} >
                 <input type="text" onChange={setGameTitle} autoComplete="off" placeholder="Search by Game" />
                 <button type="submit" className="submitButton">Submit</button>
             </form>
