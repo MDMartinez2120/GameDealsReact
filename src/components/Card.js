@@ -12,7 +12,7 @@ export default function Card(props){
                     <img className="card-img" src={props.gameImg} alt="game image"/>
                     <div className="card-game-prices">
                         <h5 className="game-deal">Sale Price: {'$' + props.salePrice}</h5>
-                        <hr
+                        <hr className='w-100'
                             style={{
                                 background: 'lime',
                                 color: 'lime',

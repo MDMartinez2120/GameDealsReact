@@ -1,8 +1,5 @@
 .store-cards {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+
 }
 
 .store-data {
