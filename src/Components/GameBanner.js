@@ -34,35 +34,35 @@ function GameBanner(){
         e.preventDefault();
     }
 
-    return (
-            <div className='slideshow-container'>
-                <div className="mySlides fade">
-                    <div className="number-text">1 / 3</div>
-                    <img src="" style="width:100%"/>
-                        <div className="text">Caption Text</div>
-                </div>
-
-                <div className="mySlides fade">
-                    <div className="number-text">2 / 3</div>
-                    <img src="" style="width:100%"/>
-                        <div className="text">Caption Two</div>
-                </div>
-
-                <div className="mySlides fade">
-                    <div className="number-text">3 / 3</div>
-                    <img src="" style="width:100%"/>
-                        <div className="text">Caption Three</div>
-                </div>
-                <div>
-                    <a className="prev" onClick="plusSlides(-1)">&#10094;</a>
-                    <a className="next" onClick="plusSlides(1)">&#10095;</a>
-                </div>
-                <div style="text-align:center">
-                    <span className="dot" onClick={submitHandler}></span>
-                    <span className="dot" onClick={submitHandler}></span>
-                    <span className="dot" onClick={submitHandler}></span>
-                </div>
-            </div>
-    )
+    // return (
+    //         <div className='slideshow-container'>
+    //             <div className="mySlides fade">
+    //                 <div className="number-text">1 / 3</div>
+    //                 <img src="" style="width:100%"/>
+    //                     <div className="text">Caption Text</div>
+    //             </div>
+    //
+    //             <div className="mySlides fade">
+    //                 <div className="number-text">2 / 3</div>
+    //                 <img src="" style="width:100%"/>
+    //                     <div className="text">Caption Two</div>
+    //             </div>
+    //
+    //             <div className="mySlides fade">
+    //                 <div className="number-text">3 / 3</div>
+    //                 <img src="" style="width:100%"/>
+    //                     <div className="text">Caption Three</div>
+    //             </div>
+    //             <div>
+    //                 <a className="prev" onClick="plusSlides(-1)">&#10094;</a>
+    //                 <a className="next" onClick="plusSlides(1)">&#10095;</a>
+    //             </div>
+    //             <div style="text-align:center">
+    //                 <span className="dot" onClick={submitHandler}></span>
+    //                 <span className="dot" onClick={submitHandler}></span>
+    //                 <span className="dot" onClick={submitHandler}></span>
+    //             </div>
+    //         </div>
+    // )
 }
 export default GameBanner;
