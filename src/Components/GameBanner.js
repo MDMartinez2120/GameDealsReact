@@ -1,55 +1,38 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './GameBanner.css'
 
 const GameBanner = () => {
-    const [index, setIndex] = React.useState(0);
-    const timeoutRef = React.useRef(null);
-    const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-    const delay = 2500;
+    const [data, setData] = useState([]);
 
-    const resetTimeout = () => {
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-        }
-    }
-
-    React.useEffect(() => {
-        resetTimeout();
-        timeoutRef.current = setTimeout(
-            () =>
-                setIndex((prevIndex) =>
-                    prevIndex === colors.length - 1 ? 0 : prevIndex + 1
-                ),
-            delay
-        );
-
-        return () => {
-            resetTimeout();
+    useEffect(() => {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': process.env.REACT_APP_GAME_DEALS,
+                'X-RapidAPI-Host': 'cheapshark-game-deals.p.rapidapi.com'
+            }
         };
-    }, [index]);
+
+        fetch('https://cheapshark-game-deals.p.rapidapi.com/deals?lowerPrice=0&steamRating=0&title&limit=3', options)
+            .then(response => response.json())
+            .then(response => setData(response))
+            .catch(err => console.error(err));
+    })
 
     return (
         <div className="slideshow">
-            <div
-                className="slideshowSlider"
-                style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-            >
-                {colors.map((backgroundColor, index) => (
-                    <div
-    className="slide"
-    key={index}
-    style={{backgroundColor}}
-    />
-                ))}
-            </div>
+            {data.map((game) => {
+                return (
+                    <div className='game-card'>
+                        <h3 className='game-title'>{game.title}</h3>
+                        <img className='game-image' src={game.thumb} alt="game-image" />
+                        <h4 className='game-price'>Normal Price: {game.normalPrice}</h4>
+                        <h4 className='game-sale-price'>Sale Price: {game.salePrice}</h4>
+                        <h4 className='game-store'>Store: {game.storeID}</h4>
+                    </div>
+                )
 
-            <div className="slideshowDots">
-                {colors.map((_, idx) => (
-                    <div key={idx} className={`slideshowDot${index === idx ? " active" : ""}`} onClick={() => {
-    setIndex(idx);
-}}/>
-                ))}
-            </div>
+            })}
         </div>
     );
 }
