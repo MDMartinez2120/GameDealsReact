@@ -1,12 +1,12 @@
 import GameHeader from "./Components/GameHeader";
-import GameBanner from "./Components/GameBanner";
+import GameCarousel from "./Components/GameCarousel";
 
 
 function App() {
   return (
     <div className="App">
         <GameHeader />
-        <GameBanner />
+        <GameCarousel />
     </div>
   );
 }
