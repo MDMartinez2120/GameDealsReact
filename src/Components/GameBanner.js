@@ -23,12 +23,15 @@ const GameBanner = () => {
         <div className="slideshow">
             {data.map((game) => {
                 return (
-                    <div className='game-card'>
-                        <h3 className='game-title'>{game.title}</h3>
-                        <img className='game-image' src={game.thumb} alt="game-image" />
-                        <h4 className='game-price'>Normal Price: {game.normalPrice}</h4>
-                        <h4 className='game-sale-price'>Sale Price: {game.salePrice}</h4>
-                        <h4 className='game-store'>Store: {game.storeID}</h4>
+                    <div className='card-box'>
+                        <div className='game-card'>
+                            <div className='card-inner'>
+                                <h3 className='game-title'>{game.title}</h3>
+                                <img className='game-image' src={game.thumb} alt="game-image" />
+                                <h4 className='game-price'>Normal Price: {game.normalPrice}</h4>
+                                <h4 className='game-sale-price'>Sale Price: {game.salePrice}</h4>
+                            </div>
+                        </div>
                     </div>
                 )
 
