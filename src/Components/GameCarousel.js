@@ -1,8 +1,28 @@
 import React, {useState, useEffect} from "react";
 import './GameCarousel.css'
 
-const GameCarousel = () => {
+const GameCarousel = (props) => {
     const [data, setData] = useState([]);
+    const {children} = props
+
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [length, setLength] = useState(children.length)
+
+    useEffect(() => {
+        setLength(children.length)
+    }, [children])
+
+    const next = () => {
+        if (currentIndex < (length - 1)) {
+            setCurrentIndex(prevState => prevState + 1)
+        }
+    }
+
+    const prev = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(prevState => prevState - 1)
+        }
+    }
 
     useEffect(() => {
         const options = {
@@ -23,16 +43,18 @@ const GameCarousel = () => {
         <div className="slideshow">
             {data.map((game) => {
                 return (
-                    <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
-                        <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img src={game.thumb} className="d-block w-100" alt="..."/>
-                            </div>
-                            <div className="carousel-item">
-                                <img src={game.thumb} className="d-block w-100" alt="..."/>
-                            </div>
-                            <div className="carousel-item">
-                                <img src={game.thumb} className="d-block w-100" alt="..."/>
+                    <div className="carousel-container" style={{ maxWidth: 1200, marginLeft: 'auto', marginRight: 'auto', marginTop: 64 }}>
+                        <div className="carousel-wrapper">
+                                <button onClick={prev} className="left-arrow">
+                                    &lt;
+                                </button>
+                            <div className="carousel-content-wrapper">
+                                    <button onClick={next} className="right-arrow">
+                                        &gt;
+                                    </button>
+                                <div className="carousel-content" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                                    {children}
+                                </div>
                             </div>
                         </div>
                     </div>
