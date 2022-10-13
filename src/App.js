@@ -1,13 +1,15 @@
-import GameHeader from "./Components/GameHeader";
-import GameCarousel from "./Components/GameCarousel";
+import React, {useState, useEffect} from "react";
 
+import Login from './components/Login/Login';
+import Home from './components/Home/Home';
+import MainHeader from './components/MainHeader/MainHeader';
 
 function App() {
+
   return (
-    <div className="App">
-        <GameHeader />
-        <GameCarousel />
-    </div>
+      <div>
+        <MainHeader />
+      </div>
   );
 }
 
