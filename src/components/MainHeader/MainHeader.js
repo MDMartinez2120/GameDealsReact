@@ -3,7 +3,6 @@ import React, { useState, useEffect} from 'react';
 import classes from './MainHeader.module.css';
 import Button from '../UI/Button/Button';
 import Home from '../Home/Home';
-import Login from "../Login/Login";
 
 const MainHeader = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,15 +26,100 @@ const MainHeader = (props) => {
         setIsLoggedIn(false);
     };
 
-    return (
-        <header className={classes['main-header']}>
-            <h1>Gamer Deals</h1>
-            <Login>
-                {!isLoggedIn && <Login onLogin={loginHandler} />}
-                {isLoggedIn && <Home onLogout={logoutHandler} />}
-            </Login>
-        </header>
-    );
+    const Login = (props) => {
+        const [enteredEmail, setEnteredEmail] = useState('');
+        const [emailIsValid, setEmailIsValid] = useState();
+        const [enteredPassword, setEnteredPassword] = useState('');
+        const [passwordIsValid, setPasswordIsValid] = useState();
+        const [formIsValid, setFormIsValid] = useState(false);
+
+        useEffect(() => {
+            const identifier = setTimeout(() => {
+                setFormIsValid(
+                    enteredEmail.includes('@') && enteredPassword.trim().length > 6
+                );
+            }, 500);
+            //CLEAN UP FUNCTION
+            return () => {
+                console.log('cleanup')
+                clearTimeout(identifier);
+            }
+        }, [enteredEmail, enteredPassword]);
+
+        const emailChangeHandler = (event) => {
+            setEnteredEmail(event.target.value);
+
+
+        };
+
+        const passwordChangeHandler = (event) => {
+            setEnteredPassword(event.target.value);
+
+            setFormIsValid(
+                event.target.value.trim().length > 6 && enteredEmail.includes('@')
+            );
+        };
+
+        const validateEmailHandler = () => {
+            setEmailIsValid(enteredEmail.includes('@'));
+        };
+
+        const validatePasswordHandler = () => {
+            setPasswordIsValid(enteredPassword.trim().length > 6);
+        };
+
+        const submitHandler = (event) => {
+            event.preventDefault();
+            props.onLogin(enteredEmail, enteredPassword);
+        };
+
+        return (
+            <header className={classes['main-header']}>
+                <h1>Gamer Deals</h1>
+                <div>
+                    {!isLoggedIn && <Login onLogin={loginHandler}/>}
+                    {isLoggedIn && <Home onLogout={logoutHandler}/>}
+                    <div className={classes.login}>
+                        <form onSubmit={submitHandler}>
+                            <div
+                                className={`${classes.control} ${
+                                    emailIsValid === false ? classes.invalid : ''
+                                }`}
+                            >
+                                <label htmlFor="email">E-Mail</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    value={enteredEmail}
+                                    onChange={emailChangeHandler}
+                                    onBlur={validateEmailHandler}
+                                />
+                            </div>
+                            <div
+                                className={`${classes.control} ${
+                                    passwordIsValid === false ? classes.invalid : ''
+                                }`}
+                            >
+                                <label htmlFor="password">Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    value={enteredPassword}
+                                    onChange={passwordChangeHandler}
+                                    onBlur={validatePasswordHandler}
+                                />
+                            </div>
+                            <div className={classes.actions}>
+                                <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+                                    Login
+                                </Button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </header>
+        );
+    }
 };
 
 export default MainHeader;
